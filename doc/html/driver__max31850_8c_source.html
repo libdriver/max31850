@@ -115,8 +115,7 @@ $(function(){initNavTree('driver__max31850_8c_source.html','',''); });
 <div class="line"><a id="l00059" name="l00059"></a><span class="lineno"><a class="line" href="driver__max31850_8c.html#a1516661c579436f07a972fd122a80826">   59</a></span><span class="preprocessor">#define MAX31850_CMD_READ_SCRATCHPAD          0xBE        </span><span class="preprocessor"></span></div>
 <div class="line"><a id="l00060" name="l00060"></a><span class="lineno"><a class="line" href="driver__max31850_8c.html#a21817dec4a4396861297552918ca088c">   60</a></span><span class="preprocessor">#define MAX31850_CMD_READ_POWER_SUPPLY        0xB4        </span><span class="preprocessor"></span></div>
 <div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span></div>
-<div class="foldopen" id="foldopen00065" data-start="{" data-end="};">
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno"><a class="line" href="driver__max31850_8c.html#a40189e91d9606804ffa2fd3a5233ffec">   65</a></span><span class="keyword">const</span> uint8_t <a class="code hl_variable" href="driver__max31850_8c.html#a40189e91d9606804ffa2fd3a5233ffec">gc_max31850_crc_table</a>[256] =</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span><span class="keyword">static</span> <span class="keyword">const</span> uint8_t gsc_max31850_crc_table[256] =</div>
 <div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>{</div>
 <div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    0X00, 0X5E, 0XBC, 0XE2, 0X61, 0X3F, 0XDD, 0X83, 0XC2, 0X9C, 0X7E, 0X20, 0XA3,</div>
 <div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    0XFD, 0X1F, 0X41, 0X9D, 0XC3, 0X21, 0X7F, 0XFC, 0XA2, 0X40, 0X1E, 0X5F, 0X01,</div>
@@ -139,7 +138,6 @@ $(function(){initNavTree('driver__max31850_8c_source.html','',''); });
 <div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    0X97, 0XC9, 0X4A, 0X14, 0XF6, 0XA8, 0X74, 0X2A, 0XC8, 0X96, 0X15, 0X4B, 0XA9,</div>
 <div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    0XF7, 0XB6, 0XE8, 0X0A, 0X54, 0XD7, 0X89, 0X6B, 0X35,</div>
 <div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>};</div>
-</div>
 <div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span></div>
 <div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span><span class="keyword">static</span> uint8_t a_max31850_check_crc(uint8_t *buf, uint8_t len, uint8_t crc)</div>
 <div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>{</div>
@@ -148,7 +146,7 @@ $(function(){initNavTree('driver__max31850_8c_source.html','',''); });
 <div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>    </div>
 <div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>    <span class="keywordflow">for</span> (i = 0; i &lt; len; i++)</div>
 <div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>    {</div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>        crc8 = <a class="code hl_variable" href="driver__max31850_8c.html#a40189e91d9606804ffa2fd3a5233ffec">gc_max31850_crc_table</a>[crc8 ^ buf[i]];       <span class="comment">/* calculate crc */</span></div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>        crc8 = gsc_max31850_crc_table[crc8 ^ buf[i]];      <span class="comment">/* calculate crc */</span></div>
 <div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>    }</div>
 <div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>    <span class="keywordflow">if</span> (crc8 == crc)                                       <span class="comment">/* check crc */</span></div>
 <div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>    {</div>
@@ -1129,7 +1127,6 @@ $(function(){initNavTree('driver__max31850_8c_source.html','',''); });
 <div class="ttc" id="adriver__max31850_8c_html_a1c9e031cf20350b56c8864831c80bd6e"><div class="ttname"><a href="driver__max31850_8c.html#a1c9e031cf20350b56c8864831c80bd6e">MAX31850_CMD_SEARCH_ROM</a></div><div class="ttdeci">#define MAX31850_CMD_SEARCH_ROM</div><div class="ttdoc">chip command definition</div><div class="ttdef"><b>Definition</b> <a href="#l00054">driver_max31850.c:54</a></div></div>
 <div class="ttc" id="adriver__max31850_8c_html_a21817dec4a4396861297552918ca088c"><div class="ttname"><a href="driver__max31850_8c.html#a21817dec4a4396861297552918ca088c">MAX31850_CMD_READ_POWER_SUPPLY</a></div><div class="ttdeci">#define MAX31850_CMD_READ_POWER_SUPPLY</div><div class="ttdef"><b>Definition</b> <a href="#l00060">driver_max31850.c:60</a></div></div>
 <div class="ttc" id="adriver__max31850_8c_html_a2989837a37d6d63b59c6dd541b785435"><div class="ttname"><a href="driver__max31850_8c.html#a2989837a37d6d63b59c6dd541b785435">MAX_CURRENT</a></div><div class="ttdeci">#define MAX_CURRENT</div><div class="ttdef"><b>Definition</b> <a href="#l00046">driver_max31850.c:46</a></div></div>
-<div class="ttc" id="adriver__max31850_8c_html_a40189e91d9606804ffa2fd3a5233ffec"><div class="ttname"><a href="driver__max31850_8c.html#a40189e91d9606804ffa2fd3a5233ffec">gc_max31850_crc_table</a></div><div class="ttdeci">const uint8_t gc_max31850_crc_table[256]</div><div class="ttdoc">crc table</div><div class="ttdef"><b>Definition</b> <a href="#l00065">driver_max31850.c:65</a></div></div>
 <div class="ttc" id="adriver__max31850_8c_html_a68eba8b601afe11f1b871d944976c035"><div class="ttname"><a href="driver__max31850_8c.html#a68eba8b601afe11f1b871d944976c035">SUPPLY_VOLTAGE_MAX</a></div><div class="ttdeci">#define SUPPLY_VOLTAGE_MAX</div><div class="ttdef"><b>Definition</b> <a href="#l00045">driver_max31850.c:45</a></div></div>
 <div class="ttc" id="adriver__max31850_8c_html_a90c0b20d54005712fcc8cb01281360e9"><div class="ttname"><a href="driver__max31850_8c.html#a90c0b20d54005712fcc8cb01281360e9">TEMPERATURE_MAX</a></div><div class="ttdeci">#define TEMPERATURE_MAX</div><div class="ttdef"><b>Definition</b> <a href="#l00048">driver_max31850.c:48</a></div></div>
 <div class="ttc" id="adriver__max31850_8c_html_aa11637a3e362294116559fef6ab81941"><div class="ttname"><a href="driver__max31850_8c.html#aa11637a3e362294116559fef6ab81941">MAX31850_CMD_SKIP_ROM</a></div><div class="ttdeci">#define MAX31850_CMD_SKIP_ROM</div><div class="ttdef"><b>Definition</b> <a href="#l00057">driver_max31850.c:57</a></div></div>

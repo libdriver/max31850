@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['gc_5fmax31850_5fcrc_5ftable_0',['gc_max31850_crc_table',['../driver__max31850_8c.html#a40189e91d9606804ffa2fd3a5233ffec',1,'driver_max31850.c']]]
+  ['inited_0',['inited',['../structmax31850__handle__s.html#a19bedf28d2b9748f6a62d9ae93f4e68f',1,'max31850_handle_s']]],
+  ['interface_1',['interface',['../structmax31850__info__s.html#aebaa6c28dd4f2c3dc27566fcb910fd28',1,'max31850_info_s']]]
 ];

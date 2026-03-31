@@ -24,6 +24,5 @@ var driver__max31850_8c =
     [ "max31850_read", "group__max31850__base__driver.html#ga4bfc3522898725dfc6d3da9c8e9f0121", null ],
     [ "max31850_search_rom", "group__max31850__advance__driver.html#ga5c9adf88c013deecb5468bb3f5abbdff", null ],
     [ "max31850_set_mode", "group__max31850__base__driver.html#ga13c8dae58ed04756a1918884f48d4eb9", null ],
-    [ "max31850_set_rom", "group__max31850__base__driver.html#ga6a88d3836e8fa7a43f0b4141342e1524", null ],
-    [ "gc_max31850_crc_table", "driver__max31850_8c.html#a40189e91d9606804ffa2fd3a5233ffec", null ]
+    [ "max31850_set_rom", "group__max31850__base__driver.html#ga6a88d3836e8fa7a43f0b4141342e1524", null ]
 ];
