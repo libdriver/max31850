@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['inited_0',['inited',['../structmax31850__handle__s.html#a19bedf28d2b9748f6a62d9ae93f4e68f',1,'max31850_handle_s']]],
-  ['interface_1',['interface',['../structmax31850__info__s.html#aebaa6c28dd4f2c3dc27566fcb910fd28',1,'max31850_info_s']]],
-  ['interface_20driver_20function_2',['max31850 interface driver function',['../group__max31850__interface__driver.html',1,'']]]
+  ['libdriver_20max31850_0',['LibDriver MAX31850',['../index.html',1,'']]],
+  ['link_20driver_20function_1',['max31850 link driver function',['../group__max31850__link__driver.html',1,'']]]
 ];

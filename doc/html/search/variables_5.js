@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['inited_0',['inited',['../structmax31850__handle__s.html#a19bedf28d2b9748f6a62d9ae93f4e68f',1,'max31850_handle_s']]],
-  ['interface_1',['interface',['../structmax31850__info__s.html#aebaa6c28dd4f2c3dc27566fcb910fd28',1,'max31850_info_s']]]
+  ['manufacturer_5fname_0',['manufacturer_name',['../structmax31850__info__s.html#ad25285dbf810c90f8eaf3fcef6f2b2ea',1,'max31850_info_s']]],
+  ['max_5fcurrent_5fma_1',['max_current_ma',['../structmax31850__info__s.html#a9db82802561bf22d799b03a345f1d1dc',1,'max31850_info_s']]],
+  ['mode_2',['mode',['../structmax31850__handle__s.html#a37e90f5e3bd99fac2021fb3a326607d4',1,'max31850_handle_s']]]
 ];
