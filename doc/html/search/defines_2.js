@@ -8,5 +8,6 @@ var searchData=
   ['max31850_5fcmd_5fread_5fscratchpad_5',['MAX31850_CMD_READ_SCRATCHPAD',['../driver__max31850_8c.html#a1516661c579436f07a972fd122a80826',1,'driver_max31850.c']]],
   ['max31850_5fcmd_5fsearch_5from_6',['MAX31850_CMD_SEARCH_ROM',['../driver__max31850_8c.html#a1c9e031cf20350b56c8864831c80bd6e',1,'driver_max31850.c']]],
   ['max31850_5fcmd_5fskip_5from_7',['MAX31850_CMD_SKIP_ROM',['../driver__max31850_8c.html#aa11637a3e362294116559fef6ab81941',1,'driver_max31850.c']]],
-  ['max_5fcurrent_8',['MAX_CURRENT',['../driver__max31850_8c.html#a2989837a37d6d63b59c6dd541b785435',1,'driver_max31850.c']]]
+  ['max31850_5ftiming_5frsth_5fmin_5fus_8',['MAX31850_TIMING_RSTH_MIN_US',['../driver__max31850_8c.html#af080db029f553d740e95ba5bfa0e0de0',1,'driver_max31850.c']]],
+  ['max_5fcurrent_9',['MAX_CURRENT',['../driver__max31850_8c.html#a2989837a37d6d63b59c6dd541b785435',1,'driver_max31850.c']]]
 ];
