@@ -60,6 +60,11 @@
 #define MAX31850_CMD_READ_POWER_SUPPLY        0xB4        /**< read power supply command */
 
 /**
+ * @brief chip timing definition
+ */
+#define MAX31850_TIMING_RSTH_MIN_US        480        /**< reset time high minimum */
+
+/**
  * @brief crc table
  */
 static const uint8_t gsc_max31850_crc_table[256] =
@@ -125,8 +130,9 @@ static uint8_t a_max31850_check_crc(uint8_t *buf, uint8_t len, uint8_t crc)
  */
 static uint8_t a_max31850_reset(max31850_handle_t *handle)
 {
-    uint8_t retry = 0;
     uint8_t res;
+    uint16_t elapsed;
+    uint8_t retry = 0;
     
     handle->disable_irq();                                              /* disable irq */
     if (handle->bus_write(0) != 0)                                      /* write 0 */
@@ -145,6 +151,7 @@ static uint8_t a_max31850_reset(max31850_handle_t *handle)
         return 1;                                                       /* return error */
     }
     handle->delay_us(15);                                               /* wait 15 us */
+    elapsed = 15;                                                       /* count the high time since release */
     res = 1;                                                            /* reset res */
     while ((res != 0) && (retry < 200))                                 /* wait 200 us */
     {
@@ -158,7 +165,7 @@ static uint8_t a_max31850_reset(max31850_handle_t *handle)
         retry++;                                                        /* retry times++ */
         handle->delay_us(1);                                            /* delay 1 us */
     }
-    if (retry >= 200)                                                   /* if retry times is over 200 times */
+    if (res != 0)                                                       /* no presence pulse */
     {
         handle->enable_irq();                                           /* enable irq */
         handle->debug_print("max31850: bus read no response.\n");       /* no response */
@@ -167,6 +174,7 @@ static uint8_t a_max31850_reset(max31850_handle_t *handle)
     }
     else
     {
+        elapsed += retry;                                               /* count the time before the presence pulse */
         retry = 0;                                                      /* reset retry */
     }
     res = 0;                                                            /* reset res */
@@ -182,12 +190,18 @@ static uint8_t a_max31850_reset(max31850_handle_t *handle)
         retry++;                                                        /* retry times++ */
         handle->delay_us(1);                                            /* delay 1 us */
     }
-    if (retry >= 240)                                                   /* if retry times is over 240 times */
+    if (res == 0)                                                       /* presence never ends */
     {
         handle->enable_irq();                                           /* enable irq */
         handle->debug_print("max31850: bus read no response.\n");       /* no response */
         
         return 1;                                                       /* return error */
+    }
+    elapsed += retry;                                                   /* count the presence low time */
+    if (elapsed < MAX31850_TIMING_RSTH_MIN_US)                          /* at least 480 us */
+    {
+        handle->delay_us((uint32_t)(MAX31850_TIMING_RSTH_MIN_US - 
+                                    elapsed));                          /* wait the rest of the reset high time */
     }
     handle->enable_irq();                                               /* enable irq */
     
@@ -903,7 +917,6 @@ static uint8_t a_max31850_read_2bit(max31850_handle_t *handle, uint8_t *data)
     return 0;                                                           /* success return 0 */
 }
 
-
 /**
  * @brief     write 1 bit to the bus
  * @param[in] *handle pointer to a max31850 handle structure
@@ -914,36 +927,50 @@ static uint8_t a_max31850_read_2bit(max31850_handle_t *handle, uint8_t *data)
  * @note      none
  */
 static uint8_t a_max31850_write_bit(max31850_handle_t *handle, uint8_t bit)
-{    
-    handle->disable_irq();                                          /* disable irq */
-    if (handle->bus_write(0) != 0)                                  /* write 0 */
+{
+    handle->disable_irq();                                           /* disable irq */
+    if (bit != 0)                                                    /* write 1 */
     {
-        handle->enable_irq();                                       /* enable irq */
-        handle->debug_print("max31850: write bit failed.\n");       /* write bit failed */
-        
-        return 1;                                                   /* return error */
+        if (handle->bus_write(0) != 0)                               /* pull the bus low */
+        {
+            handle->enable_irq();                                    /* enable irq */
+            handle->debug_print("max31850: write bit failed.\n");    /* write bit failed */
+            
+            return 1;                                                /* return error */
+        }
+        handle->delay_us(2);                                         /* wait 2 us */
+        if (handle->bus_write(1) != 0)                               /* release the bus */
+        {
+            handle->enable_irq();                                    /* enable irq */
+            handle->debug_print("max31850: write bit failed.\n");    /* write bit failed */
+            
+            return 1;                                                /* return error */
+        }
+        handle->delay_us(60);                                        /* wait 60 us */
     }
-    handle->delay_us(12);                                           /* wait 12 us */
-    if (handle->bus_write(bit) != 0)                                /* write bit */
+    else                                                             /* write 0 */
     {
-        handle->enable_irq();                                       /* enable irq */
-        handle->debug_print("max31850: write bit failed.\n");       /* write bit failed */
-        
-        return 1;                                                   /* return error */
-    } 
-    handle->delay_us(30);                                           /* wait 30 us */
-    if (handle->bus_write(1) != 0)                                  /* write 1 */
-    {
-        handle->enable_irq();                                       /* enable irq */
-        handle->debug_print("max31850: write bit failed.\n");       /* write bit failed */
-        
-        return 1;                                                   /* return error */
+        if (handle->bus_write(0) != 0)                               /* pull the bus low */
+        {
+            handle->enable_irq();                                    /* enable irq */
+            handle->debug_print("max31850: write bit failed.\n");    /* write bit failed */
+            
+            return 1;                                                /* return error */
+        }
+        handle->delay_us(60);                                        /* wait 60 us */
+        if (handle->bus_write(1) != 0)                               /* release the bus */
+        {
+            handle->enable_irq();                                    /* enable irq */
+            handle->debug_print("max31850: write bit failed.\n");    /* write bit failed */
+            
+            return 1;                                                /* return error */
+        }
+        handle->delay_us(2);                                         /* wait 2 us */
     }
-    handle->delay_us(5);                                            /* wait 5 us */
-    handle->enable_irq();                                           /* enable irq */
+    handle->enable_irq();                                            /* enable irq */
     
-    return 0;                                                       /* success return 0 */
-}    
+    return 0;                                                        /* success return 0 */
+}
 
 /**
  * @brief         search the max31850 bus
@@ -1072,7 +1099,7 @@ static uint8_t a_max31850_search(max31850_handle_t *handle, uint8_t (*pid)[8], u
             s = 0;                                                                        /* reset s */
         }
         num++;                                                                            /* num++ */
-        if (num > (*number))                                                              /* check num range */
+        if (num >= (*number))                                                             /* check num range */
         {
             break;                                                                        /* break */
         }

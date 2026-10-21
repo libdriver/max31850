@@ -60,7 +60,8 @@ var searchData=
   ['max31850_5fsearch_5ftest_57',['max31850_search_test',['../group__max31850__test__driver.html#ga52fff79ef2e047cf29157fcd21aa7da7',1,'max31850_search_test(void):&#160;driver_max31850_search_test.c'],['../group__max31850__test__driver.html#ga52fff79ef2e047cf29157fcd21aa7da7',1,'max31850_search_test(void):&#160;driver_max31850_search_test.c']]],
   ['max31850_5fset_5fmode_58',['max31850_set_mode',['../group__max31850__base__driver.html#ga13c8dae58ed04756a1918884f48d4eb9',1,'max31850_set_mode(max31850_handle_t *handle, max31850_mode_t mode):&#160;driver_max31850.c'],['../group__max31850__base__driver.html#ga13c8dae58ed04756a1918884f48d4eb9',1,'max31850_set_mode(max31850_handle_t *handle, max31850_mode_t mode):&#160;driver_max31850.c']]],
   ['max31850_5fset_5from_59',['max31850_set_rom',['../group__max31850__base__driver.html#ga6a88d3836e8fa7a43f0b4141342e1524',1,'max31850_set_rom(max31850_handle_t *handle, uint8_t rom[8]):&#160;driver_max31850.c'],['../group__max31850__base__driver.html#ga6a88d3836e8fa7a43f0b4141342e1524',1,'max31850_set_rom(max31850_handle_t *handle, uint8_t rom[8]):&#160;driver_max31850.c']]],
-  ['max_5fcurrent_60',['MAX_CURRENT',['../driver__max31850_8c.html#a2989837a37d6d63b59c6dd541b785435',1,'driver_max31850.c']]],
-  ['max_5fcurrent_5fma_61',['max_current_ma',['../structmax31850__info__s.html#a9db82802561bf22d799b03a345f1d1dc',1,'max31850_info_s']]],
-  ['mode_62',['mode',['../structmax31850__handle__s.html#a37e90f5e3bd99fac2021fb3a326607d4',1,'max31850_handle_s']]]
+  ['max31850_5ftiming_5frsth_5fmin_5fus_60',['MAX31850_TIMING_RSTH_MIN_US',['../driver__max31850_8c.html#af080db029f553d740e95ba5bfa0e0de0',1,'driver_max31850.c']]],
+  ['max_5fcurrent_61',['MAX_CURRENT',['../driver__max31850_8c.html#a2989837a37d6d63b59c6dd541b785435',1,'driver_max31850.c']]],
+  ['max_5fcurrent_5fma_62',['max_current_ma',['../structmax31850__info__s.html#a9db82802561bf22d799b03a345f1d1dc',1,'max31850_info_s']]],
+  ['mode_63',['mode',['../structmax31850__handle__s.html#a37e90f5e3bd99fac2021fb3a326607d4',1,'max31850_handle_s']]]
 ];

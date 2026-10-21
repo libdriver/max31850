@@ -10,6 +10,7 @@ var driver__max31850_8c =
     [ "MAX31850_CMD_READ_SCRATCHPAD", "driver__max31850_8c.html#a1516661c579436f07a972fd122a80826", null ],
     [ "MAX31850_CMD_SEARCH_ROM", "driver__max31850_8c.html#a1c9e031cf20350b56c8864831c80bd6e", null ],
     [ "MAX31850_CMD_SKIP_ROM", "driver__max31850_8c.html#aa11637a3e362294116559fef6ab81941", null ],
+    [ "MAX31850_TIMING_RSTH_MIN_US", "driver__max31850_8c.html#af080db029f553d740e95ba5bfa0e0de0", null ],
     [ "MAX_CURRENT", "driver__max31850_8c.html#a2989837a37d6d63b59c6dd541b785435", null ],
     [ "SUPPLY_VOLTAGE_MAX", "driver__max31850_8c.html#a68eba8b601afe11f1b871d944976c035", null ],
     [ "SUPPLY_VOLTAGE_MIN", "driver__max31850_8c.html#aac8d8cbd899667d609787ef4cf37054d", null ],
